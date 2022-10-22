@@ -4,7 +4,11 @@ int main(void){
 system("color 4");
 
 int fatorial = 1;
-int opcao, i, k, n, k2;
+int fn = 1;
+int fkt = 1;
+int fk = 1;
+int pr = 0;
+int opcao, i, k, n, k2, permu, kn, i2;
 int fatn = 1;
 int fatk = 1;
 int fatk2 = 1;
@@ -14,38 +18,92 @@ int nf = 0;
 int arranjo = 1;
 int arranjor = 1;
                                 //MENU
-printf("\n=====MENU OPCOES=====");
-printf("\n1. Permutacao Simples");
-printf("\n2. Permutacao com Repeticao");
-printf("\n3. Combinacao Simples");
-printf("\n4. Combinacao com Repeticao");
-printf("\n5. Arranjo Simples");
-printf("\n6. Arranjo com Repeticao");
-printf("\nEscolha uma opcao: ");
-scanf("%d",&opcao);
+printf("\n----------------------------------------------");
+printf("\nMENU");
+printf("\n1. P(n)");
+printf("\n2. PR(n,k)");
+printf("\n3. A(n,k)");
+printf("\n4. AR(n,k)");
+printf("\n5. C(n,k)");
+printf("\n6. CR(n,k)");
+printf("\n0. SAIR");
+printf("\n----------------------------------------------");
+do {
+    printf("\nEscolha uma opcao: ");
+    scanf("%d",&opcao);
     switch (opcao) {
 
     case 1:
-
-        printf("\n==========PERMUTACAO SIMPLES===========");
+        //P(n,k)
+        printf("\n------------PERMUTACAO---------------");
         printf("\nDigite o valor de n: ");
         scanf("%d",&n);
         for(i = 1; i <= n; i++){
             fatorial = fatorial * i;
         }
-        printf("\nP %d,%d = %d preposicoes\n", n, n, fatorial);
+        printf("\nP %d = %d preposicoes\n", n, fatorial);
 
     break;
 
     case 2:
-
-        printf("\n==========PERMUTACAO COM REPETICAO===========");
+        //Permutacao Repeticao
+        printf("\n------------PERMUTACAO C/ REPETICAO---------------");
+        printf("\nvalor n: ");
+        scanf("%d",&n);
+        printf("\nNumero de repeticoes: ");
+        scanf("%d",&kn);
+            for(i = 1; i <= n; i++) {
+                fn = fn * i;
+            }
+            for(i = 1; i <= kn; i++) {
+                printf("\nvalor da %d repeticao ",i);
+                scanf("%d",&k);
+                for(i2 =1; i2 <= k; i2++) {
+                    fk = fk * i2;
+                }
+                fkt = fkt * fk;
+                fk = 1;
+            }
+        pr = fn / fkt;
+        printf("\nPR %d c/ %d repeticoes = %d\n",n,k,pr);
 
     break;
 
     case 3:
+        //A(n,k)
+        printf("\n------------ARRANJO SIMPLES---------------");
+        printf("\nDigite um valor para n: ");
+        scanf("%d",&n);
+        printf("\nDigite um valor para k: ");
+        scanf("%d",&k);
+        k = n - k;
+        for(i =1; i <= n; i++){
+            fatn = fatn * i;
+        }
+        for(i = 1; i <= k; i++){
+            fatk = fatk * i;
+        }
+        arranjo = fatn / fatk;
+        printf("\nA%d,%d = %d\n",n,k,arranjo);
 
-        printf("\n==========COMBINACAO SIMPLES===========");
+    break;
+
+    case 4:
+        //AR(n,k)
+        printf("\n------------ARRANJO C/ REPETICAO---------------");
+        printf("\nDigite um valor para n: ");
+        scanf("%d",&n);
+        printf("\nDigite um valor para k: ");
+        scanf("%d",&k);
+        for(i = 1; i <= k; i++){
+            arranjor = arranjor * n;
+        }
+        printf("\nAR%d,%d = %d\n",n,k,arranjor);
+    break;
+
+    case 5:
+        //C(n,k)
+        printf("\n------------COMBINACAO SIMPLES---------------");
         printf("\nDigite valor para n: ");
         scanf("%d",&n);
         printf("\nDigite valor para k: ");
@@ -65,9 +123,9 @@ scanf("%d",&opcao);
 
     break;
 
-    case 4:
-
-        printf("\n==========COMBINACAO COM REPETICAO===========");
+    case 6:
+        //CR(n,k)
+        printf("\n------------COMBINACAO C/ REPETICAO---------------");
         printf("\nDigite um valor para n: ");
         scanf("%d",&n);
         printf("\nDigite um valor para k: ");
@@ -88,46 +146,20 @@ scanf("%d",&opcao);
 
     break;
 
-    case 5:
-
-        printf("\n==========ARRANJO SIMPLES===========");
-        printf("\nDigite um valor para n: ");
-        scanf("%d",&n);
-        printf("\nDigite um valor para k: ");
-        scanf("%d",&k);
-        k = n - k;
-        for(i =1; i <= n; i++){
-            fatn = fatn * i;
-        }
-        for(i = 1; i <= k; i++){
-            fatk = fatk * i;
-        }
-        arranjo = fatn / fatk;
-        printf("\nA%d,%d = %d\n",n,k,arranjo);
-
-    break;
-
-    case 6:
-
-        printf("\n==========ARRANJO COM COMBINACAO===========");
-        printf("\nDigite um valor para n: ");
-        scanf("%d",&n);
-        printf("\nDigite um valor para k: ");
-        scanf("%d",&k);
-        for(i = 1; i <= k; i++){
-            arranjor = arranjor * n;
-        }
-        printf("\nAR%d,%d = %d\n",n,k,arranjor);
-
+    case 0:
+        printf("\nSaindo....");
     break;
 
     default:
-
-        printf("\nOpcao invalida");
-
+        printf("\nEscolha uma opcao valida!");
     break;
-    }
+        }
+} while (opcao != 0);
 
 system("pause");
 return 0;
 }
+
+
+
+
