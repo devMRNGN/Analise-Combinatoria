@@ -1,9 +1,3 @@
-/* ATIVIDADE 3 - Matemática discreta
-JOÃO TADEU DA SILVA MARANGONI
-CAUÊ TRANI DE MIRA
-LUCAS HELBEL ZEREDE
-LUCAS RODRIGUES DE MORAIS
-*/
 #include <stdlib.h>
 #include <stdio.h>
 int fatoriar(int n){
@@ -142,4 +136,3 @@ int main(void){
 
 return 0;
 }
-
